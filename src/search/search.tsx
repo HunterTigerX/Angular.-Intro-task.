@@ -52,6 +52,12 @@ const Search = () => {
       .catch((error) => console.error(error));
   }
 
+  async function callError() {
+    await fetch('https://notexistingurl').catch((error) =>
+      console.error('This is logged error -> ', error)
+    );
+  }
+
   function submitSearchText(e: { preventDefault: () => void }) {
     const submitButton = document.getElementById(
       'search-button'
@@ -94,6 +100,7 @@ const Search = () => {
         </form>
       </div>
       <div>{savedResults}</div>
+      <button onClick={callError}>Call Error</button>
     </>
   );
 };
